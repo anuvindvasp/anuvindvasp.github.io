@@ -126,7 +126,50 @@
   border: 1px solid white;
   box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
 }
-	
+
+.scroll-indicator {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-align: center;
+  z-index: 9999;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.scroll-indicator .mouse {
+  width: 30px;
+  height: 50px;
+  border: 2px solid white;
+  border-radius: 20px;
+  margin: 10px auto 0;
+  position: relative;
+}
+
+.scroll-indicator .arrow {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  animation: bounce 1.5s infinite;
+  color: white;
+}
+
+@keyframes bounce {
+  0%, 100% { top: 12px; }
+  50% { top: 20px; }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}	
 
 </style>
 
@@ -701,6 +744,35 @@
   <script src="js/scrollax.min.js"></script>
   
   <script src="js/main.js"></script>
-    
+   <div id="scroll-indicator" class="scroll-indicator">
+  <p>Scroll to explore</p>
+  <div class="mouse">
+    <span class="arrow">&#8595;</span>
+  </div>
+</div>
+
+
+
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const scrollIndicator = document.getElementById('scroll-indicator');
+    scrollIndicator.style.display = 'block';
+
+    function hideIndicator() {
+      scrollIndicator.style.animation = 'fadeOut 2.5s forwards';
+      window.removeEventListener('scroll', onScroll);
+    }
+
+    function onScroll() {
+      if (window.scrollY > 50) {
+        hideIndicator();
+      }
+    }
+
+    setTimeout(hideIndicator, 10000); // auto-hide after 10 seconds
+    window.addEventListener('scroll', onScroll);
+  });
+</script>  
   </body>
 </html>
