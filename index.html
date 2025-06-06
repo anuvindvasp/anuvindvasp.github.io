@@ -106,9 +106,27 @@
 }
 
 .zoom-effect:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
+.blog-entry .text {
+  margin-top: 45px; /* more spacing below image */
+}
+
+/* White border and smooth hover effect */
+.blog-entry {
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  padding: 10px; /* Add spacing inside the border */
+  background-color: rgba(255, 255, 255, 0.02); /* Optional: Light background to enhance visibility */
+}
+
+.blog-entry:hover {
+  border: 1px solid white;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+}
+	
 
 </style>
 
