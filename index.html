@@ -1036,23 +1036,33 @@
   <script src="js/aos.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  
   <script src="js/main.js"></script>
-   <div id="scroll-indicator" class="scroll-indicator">
+
+
+	  
+<div id="scroll-indicator" class="scroll-indicator">
   <p>Scroll to explore</p>
-  <div class="mouse">
+  <div class="mouse" id="scroll-button">
     <span class="arrow">&#8595;</span>
   </div>
 </div>
 
-
-
-
 <script>
   window.addEventListener('DOMContentLoaded', () => {
     const scrollIndicator = document.getElementById('scroll-indicator');
+    const scrollButton = document.getElementById('scroll-button');
+
     scrollIndicator.style.display = 'block';
 
+    // Scroll to second section on click/tap
+    scrollButton.addEventListener('click', () => {
+      const nextSection = document.querySelector('section:nth-of-type(2)');
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+
+    // Hide logic
     function hideIndicator() {
       scrollIndicator.style.animation = 'fadeOut 2.5s forwards';
       window.removeEventListener('scroll', onScroll);
@@ -1067,6 +1077,7 @@
     setTimeout(hideIndicator, 10000); // auto-hide after 10 seconds
     window.addEventListener('scroll', onScroll);
   });
-</script>  
+</script>
+
   </body>
 </html>
