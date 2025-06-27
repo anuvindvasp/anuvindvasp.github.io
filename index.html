@@ -280,6 +280,28 @@
   color: #dddddd; /* Lighter white */
   font-weight: 400;
 }	
+
+#topBtn {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  z-index: 99;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  background-color: #ffbd39;
+  color: black;
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+#topBtn:hover {
+  background-color: #ffd75c;
+}
 	
 </style>
 
@@ -1078,6 +1100,23 @@
     window.addEventListener('scroll', onScroll);
   });
 </script>
+<!-- Back to Top Button -->
+<button onclick="topFunction()" id="topBtn" title="Go to top">↑</button>
 
+<script>
+  window.onscroll = function() {
+    const btn = document.getElementById("topBtn");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
+  };
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
   </body>
 </html>
