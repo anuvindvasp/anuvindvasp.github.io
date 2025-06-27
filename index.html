@@ -306,6 +306,23 @@
 html {
   scroll-behavior: smooth;
 }
+
+#icon-tags img {
+  width: 8px;
+  height: 8px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 2px #00000099);
+}
+
+#icon-cloud-container canvas {
+  pointer-events: auto;
+  cursor: default;
+}
+
+#icon-tags img.large-icon {
+  width: 30px; /* or try 32px–36px */
+  height: 30px;
+}
 	
 </style>
 
@@ -653,6 +670,54 @@ html {
       </div>
     </div>
   </div>
+	 <script src="https://www.goat1000.com/tagcanvas.min.js"></script>
+
+ <!-- Spacer -->
+<div style="height: 30px;"></div>
+
+<!-- Icon Cloud Canvas -->
+<div id="icon-cloud-container" style="width: 100%; display: flex; justify-content: center;">
+  <canvas width="320" height="320" id="iconCanvas">
+    Your browser does not support the canvas element.
+  </canvas>
+</div>
+
+<!-- Icon Tag List (Hidden) -->
+<div id="icon-tags" style="display: none;">
+  <ul>
+    <li><a href="#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy"></a></li>
+    <li><a href="#"><img src="https://img.icons8.com/color/96/microsoft-excel-2019.png" alt="Excel"></a></li>
+    <li><a href="#"><img src="https://img.icons8.com/color/96/power-bi.png" alt="Power BI"></a></li>
+    <li><a href="#"><img src="https://img.icons8.com/color/96/tableau-software.png" alt="Tableau"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL"></a></li>
+    <li><a href="#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/seaborn/0099C6" alt="Seaborn"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/matplotlib/11557C" alt="Matplotlib"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/streamlit/FF4B4B" alt="Streamlit"></a></li>
+    <li><a href="#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/keras/D00000" alt="Keras"></a></li>
+    <li><a href="#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="Scikit-learn"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/beautifulsoup/964B00" alt="BeautifulSoup"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/selenium/43B02A" alt="Selenium"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/scrapy/5A4E93" alt="Scrapy"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Requests"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/googlecolab/F9AB00" alt="Google Colab"></a></li>
+    <li><a href="#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/kaggle/20BEFF" alt="Kaggle"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/anaconda/44A833" alt="Anaconda"></a></li>
+    <li><a href="#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" alt="VS Code"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/microsoftword/ffffff" alt="Word"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/microsoftpowerpoint/B7472A" alt="PowerPoint"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/openai/FFFFFF" alt="ChatGPT"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/google/4285F4" alt="Gemini"></a></li>
+    <li><a href="#"><img src="https://cdn.simpleicons.org/deepnote/ffffff" alt="DeepSeek"></a></li>
+  </ul>
+</div>
+
+
+
+
 </div>
 
 	    </div>
@@ -1128,5 +1193,42 @@ html {
     document.documentElement.scrollTop = 0;
   }
 </script>
+
+<script src="https://www.goat1000.com/tagcanvas.min.js"></script>
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    try {
+      TagCanvas.Start('iconCanvas', 'icon-tags', {
+  textColour: null,
+  outlineColour: 'transparent',
+  reverse: true,
+  depth: 0.9,
+  maxSpeed: 0.06,
+  minSpeed: 0.005,
+  shuffleTags: true,
+  initial: [0.05, -0.02],
+  decel: 0.98,
+  zoom: 1.0,
+  imageMode: "image",
+  imagePosition: "centre",
+  imageScale: 0.31,
+  dragControl: false,         // 👈 must be false
+  wheelZoom: false,
+  noSelect: true,
+  freezeActive: false,        // 👈 keeps it active when hovered
+  activeCursor: "default",
+  mouse: true,                // 👈 enables mouse-follow rotation
+  clickToFront: 500
+});
+
+
+
+    } catch (e) {
+      console.log("TagCanvas error:", e);
+      document.getElementById('iconCanvas').style.display = 'none';
+    }
+  });
+</script>	  
+	  
   </body>
 </html>
